@@ -1,6 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *:focus, *:hover{
+    outline:none;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -10,4 +18,24 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.panel {
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 2px 2px -1px rgb(0 0 0 / 0.1);
+    background-color: white;
+    margin: 10px;
+    padding: 10px;
+}
+
+.panel .panel-title {
+    color: #999;
+
+    padding: 10px;
+    padding-top: 5px;
+
+    @apply text-left;
+}
+
+.panel .panel-contents {
+    margin: 10px;
 }
