@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import _ from 'lodash';
 
-import Stocks from './Stocks.mjs'
+import SearchView from './SearchView.mjs'
 
 // css
 import './SearchStocks.css';
@@ -27,7 +27,7 @@ class SearchStocks extends Component {
     }
 
     onKeywordTyped(e) {
-        if (e.key !== "Enter") return;
+        if (e.key !== 'Enter') return;
 
         const value = e.target.value.trim();
 
@@ -95,10 +95,10 @@ class SearchStocks extends Component {
 
             result = (
                 <div>
-                    <div className="result-view">
-                        <Stocks items={ this.state.stocks } />
+                    <div className='result-view'>
+                        <SearchView items={ this.state.stocks } />
                     </div>
-                    <div className="result-pagination text-center">
+                    <div className='result-pagination text-center'>
                         {pagination}
                     </div>
                 </div>
@@ -106,13 +106,13 @@ class SearchStocks extends Component {
         }
 
         return (
-            <div className="panel col-start-2 col-span-10 rounded">
-                <div className="panel-title">특징주 검색</div>
-                <div className="panel-contents">
+            <div className='panel col-start-2 col-span-10 rounded'>
+                <div className='panel-title'>특징주 검색</div>
+                <div className='panel-contents'>
                     <input 
-                        className="input-text" 
-                        type="input"
-                        defaultValue="테슬라 배터리"
+                        className='input-text' 
+                        type='input'
+                        placeholder='핵심 단어'
                         onKeyPress={this.onKeywordTyped}></input>
                     
                     {result}
