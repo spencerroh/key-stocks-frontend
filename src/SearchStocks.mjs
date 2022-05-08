@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
-import useAsync from './hooks/useAsync.mjs'
 import axios from 'axios'
 import $ from './utils/directives.mjs'
+import useAsync from './hooks/useAsync.mjs'
 
+// Component
 import SearchView from './SearchView.mjs'
 import Pagination from './Pagination.mjs'
 
-// css
+// CSS
 import './SearchStocks.css';
 
 async function queryKeywords(queryCriteria) {
