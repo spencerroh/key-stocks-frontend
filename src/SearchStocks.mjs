@@ -22,7 +22,7 @@ async function queryKeywords(queryCriteria) {
         throw new Error('No keyword(s).');
 
     var response = await axios.post(
-        'http://localhost:2000/query/keywords', queryCriteria);
+        '/query/keywords', queryCriteria);
 
     return response.data;
 }

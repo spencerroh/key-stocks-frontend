@@ -16,7 +16,7 @@ class LastUpdated extends Component {
     }
     componentDidMount() {
         axios({
-            url: 'http://localhost:2000/today',
+            url: '/today',
             method: 'get'
         })
         .then(res => {
