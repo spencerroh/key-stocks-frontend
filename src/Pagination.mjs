@@ -18,7 +18,6 @@ export default function Pagination(props) {
     const currentSection = _.ceil(current / pagesPerSection);
 
     const movePage = (page) => {
-        console.log('movePage', page);
         pageMoved(page);
     };
 

@@ -20,8 +20,6 @@ class SearchView extends Component {
         if (this.props.items === null)
             return;
 
-        
-
         const items = this.props.items.map(
             item => 
                 <tr className="stock-name" key={item.id}>
