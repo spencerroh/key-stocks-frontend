@@ -1,0 +1,27 @@
+.pagination-container button {
+    width: 36px; 
+    height: 36px;   
+    border-width: 1px;
+    @apply border-r-0 border-gray-200 text-gray-400;
+}
+
+.pagination-container button:hover {
+    @apply bg-gray-200;
+}
+
+.pagination-container .pagination-now {
+    color: #a6d3ff;
+}
+
+.pagination-container button:first-child {
+    @apply rounded-tl-xl rounded-bl-xl;
+}
+
+.pagination-container button:last-child {
+    border-right-width: 1px;
+    @apply rounded-tr-xl rounded-br-xl;
+}
+
+.pagination-container .pagination-pn {
+    width: 60px;
+}

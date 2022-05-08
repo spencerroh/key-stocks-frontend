@@ -12,28 +12,3 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
-.result-pagination .pagination {
-    width: 36px; 
-    height: 36px;   
-    border-width: 1px;
-    @apply border-r-0 border-gray-200 text-gray-400;
-}
-
-.result-pagination .pagination:hover {
-    @apply bg-gray-200;
-}
-
-.result-pagination .pagination-now {
-    color: #a6d3ff;
-}
-
-.result-pagination .pagination:first-child {
-    @apply rounded-tl-xl rounded-bl-xl;
-}
-
-.result-pagination .pagination:last-child {
-    border-right-width: 1px;
-    @apply rounded-tr-xl rounded-br-xl;
-}
-

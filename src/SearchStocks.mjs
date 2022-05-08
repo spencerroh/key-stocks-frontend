@@ -3,6 +3,7 @@ import axios from 'axios';
 import _ from 'lodash';
 
 import SearchView from './SearchView.mjs'
+import Pagination from './Pagination.mjs'
 
 // css
 import './SearchStocks.css';
@@ -21,9 +22,25 @@ class SearchStocks extends Component {
         };
 
         this.onKeywordTyped = this.onKeywordTyped.bind(this);
+        this.onPageMoved = this.onPageMoved.bind(this);
     }
     componentDidMount() {
-
+        const keywords = {
+            'keywords': "화장품".split(' '),
+            'limit': 5
+        };
+        
+        axios
+            .post('http://localhost:2000/query/keywords', keywords)
+            .then(response => {
+                this.setState({
+                    keywords: keywords.keywords,
+                    count: response.data.count,
+                    now: 1,
+                    stocks: response.data.stocks,
+                    isFilled: true
+                });
+            });
     }
 
     onKeywordTyped(e) {
@@ -62,7 +79,9 @@ class SearchStocks extends Component {
             });
     }
 
-    onPaginationClicked(i) {
+    onPageMoved(i) {
+        console.log(i);
+
         const keywords = {
             'keywords': this.state.keywords,
             'limit': 5,
@@ -80,26 +99,24 @@ class SearchStocks extends Component {
                     isFilled: true
                 });
             });
-    }
+    }    
 
     render() {
         let result = null;
 
         if (this.state.isFilled) {
-            let pagination = _.range(1, _.ceil(this.state.count / 5)).map(i => (
-                <button 
-                    className={`pagination ${i === this.state.now ? 'pagination-now' : ''}`}
-                    key={i} 
-                    onClick={() => this.onPaginationClicked(i)}>{i}</button>
-            ));
-
             result = (
                 <div>
                     <div className='result-view'>
                         <SearchView items={ this.state.stocks } />
                     </div>
                     <div className='result-pagination text-center'>
-                        {pagination}
+                        <Pagination 
+                            count={this.state.count} 
+                            itemsPerPage="5" 
+                            current={this.state.now}
+                            pageMoved={this.onPageMoved}
+                            />
                     </div>
                 </div>
             );
