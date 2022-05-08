@@ -1,46 +1,31 @@
-import React, { Component } from 'react'
 import axios from 'axios';
+import useAsync from './hooks/useAsync.mjs'
 
+// Components
 import Stocks from './Stocks.mjs'
-// css
+
+// CSS
 import './LastUpdated.css';
 
-export default 
-class LastUpdated extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            result: [],
-            isFilled: false
-        };
-    }
-    componentDidMount() {
-        axios({
-            url: '/today',
-            method: 'get'
-        })
-        .then(res => {
-            console.log(res);
-            this.setState({
-                result: res.data,
-                isFilled: true
-            });
-        });
-    }
+async function queryTodayStocks() {
+    var response = await axios.get('/today');
+    return response.data;
+}
 
-    render() {
-        if (this.state.isFilled)
-        {
-            return (
-                <div className="panel col-start-2 col-span-10 rounded">
-                    <div className="panel-title">오늘의 특징주 ({this.state.result.date})</div>
-                    <div className="panel-contents">
-                        <Stocks items={this.state.result.stocks} />
-                    </div>
-                </div>
-            )
-        }
-        else
-            return (<div>empty</div>);
-    }
+export default function LastUpdated() {
+    const [ stocks ] = useAsync(
+        () => queryTodayStocks(),
+        {}, []);
+
+    if (stocks.loading) return (<div>Loading...</div>);
+    if (stocks.error != null) return (<div>{stocks.error}</div>);
+    
+    return (
+        <div className="panel col-start-2 col-span-10 rounded">
+            <div className="panel-title">오늘의 특징주 ({stocks.data.date})</div>
+            <div className="panel-contents">
+                <Stocks items={stocks.data.stocks} />
+            </div>
+        </div>
+    );
 }
