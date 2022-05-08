@@ -10,9 +10,6 @@ import Pagination from './Pagination.mjs'
 import './SearchStocks.css';
 
 async function queryKeywords(queryCriteria) {
-    if (queryCriteria.keywords.length === 0)
-        throw new Error('No keyword(s).');
-
     var response = await axios.post(
         '/query/keywords', queryCriteria);
 
@@ -21,16 +18,22 @@ async function queryKeywords(queryCriteria) {
 
 export default function SearchStocks() {
     const ITEMS_PER_PAGE = 5;
-    const [now, setNow] = useState(1);
-    const [queryCriteria, setQueryCriteria] = useState({
+    const [state, setState] = useState({
         keywords: [],
         limit: ITEMS_PER_PAGE,
-        offset: 0
+        page: 1
     });
+
     const [ stocks ] = useAsync(
-        () => queryKeywords(queryCriteria), 
+        () => {
+            return queryKeywords({
+                keywords: state.keywords,
+                limit: state.limit,
+                offset: (state.page - 1) * state.limit
+            });
+        },
         { loadingOnlyFirst: true },
-        [queryCriteria]);
+        [state]);
 
     const { data } = stocks;
 
@@ -41,20 +44,17 @@ export default function SearchStocks() {
         if (value.length === 0)
             return;
 
-        setNow(1);
-        setQueryCriteria({
-            ...queryCriteria,
+        setState({
+            ...state,
             keywords: value.split(' '),
-            limit: ITEMS_PER_PAGE,
-            offset: 0
+            page: 1
         });
     }
 
     const onPageMoved = (i) => {
-        setNow(i);
-        setQueryCriteria({
-            ...queryCriteria,
-            'offset': (i - 1) * ITEMS_PER_PAGE
+        setState({
+            ...state,
+            page: i
         });
     }
 
@@ -77,7 +77,7 @@ export default function SearchStocks() {
                         <Pagination 
                             count={ data.count } 
                             itemsPerPage={ ITEMS_PER_PAGE } 
-                            current={ now }
+                            current={ state.page }
                             pageMoved={ onPageMoved }
                             />
                     </div>
