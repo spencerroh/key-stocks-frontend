@@ -1,21 +1,13 @@
 import React, { useState } from 'react'
 import useAsync from './hooks/useAsync.mjs'
 import axios from 'axios'
+import $ from './utils/directives.mjs'
 
 import SearchView from './SearchView.mjs'
 import Pagination from './Pagination.mjs'
 
 // css
 import './SearchStocks.css';
-
-const $ = {
-    if_assigned: (object, generator) => {
-        if (object != null)
-            return generator();
-    
-        return null;
-    }
-};
 
 async function queryKeywords(queryCriteria) {
     if (queryCriteria.keywords.length === 0)
@@ -28,17 +20,19 @@ async function queryKeywords(queryCriteria) {
 }
 
 export default function SearchStocks() {
+    const ITEMS_PER_PAGE = 5;
     const [now, setNow] = useState(1);
     const [queryCriteria, setQueryCriteria] = useState({
         keywords: [],
-        limit: 5,
+        limit: ITEMS_PER_PAGE,
         offset: 0
     });
-    const [ queryResult ] = useAsync(
+    const [ stocks ] = useAsync(
         () => queryKeywords(queryCriteria), 
+        { loadingOnlyFirst: true },
         [queryCriteria]);
 
-    const { data } = queryResult;
+    const { data } = stocks;
 
     const onKeywordTyped = (e) => {
         if (e.key !== 'Enter') return;
@@ -51,7 +45,7 @@ export default function SearchStocks() {
         setQueryCriteria({
             ...queryCriteria,
             keywords: value.split(' '),
-            limit: 5,
+            limit: ITEMS_PER_PAGE,
             offset: 0
         });
     }
@@ -60,7 +54,7 @@ export default function SearchStocks() {
         setNow(i);
         setQueryCriteria({
             ...queryCriteria,
-            'offset': (i - 1) * 5
+            'offset': (i - 1) * ITEMS_PER_PAGE
         });
     }
 
@@ -74,7 +68,7 @@ export default function SearchStocks() {
                     placeholder='핵심 단어'
                     onKeyPress={ onKeywordTyped }></input>
                 
-            { $.if_assigned(data, () =>
+            { $.Assigned(data, () =>
                 <div>
                     <div className='result-view'>
                         <SearchView items={ data.stocks } />
@@ -82,7 +76,7 @@ export default function SearchStocks() {
                     <div className='result-pagination text-center'>
                         <Pagination 
                             count={ data.count } 
-                            itemsPerPage="5" 
+                            itemsPerPage={ ITEMS_PER_PAGE } 
                             current={ now }
                             pageMoved={ onPageMoved }
                             />

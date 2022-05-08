@@ -9,36 +9,44 @@ function reducer(state, action) {
             return {
                 loading: true,
                 data: null,
-                error: null
+                error: null,
+                count: state.count + 1
             };
         case 'SUCCESS':
             return {
                 loading: false,
                 data: action.data,
-                error: null
+                error: null,
+                count: state.count + 1
             };
         case 'ERROR':
             return {
                 loading: false,
                 data: null,
-                error: action.error
+                error: action.error,
+                count: state.count + 1
             };
         default:
             throw new Error(`Unhandled action type: ${action.type}`);
     }
 }
 
-function useAsync(asyncTask,   dependencies = []) {
+function useAsync(asyncTask, options, dependencies = []) {
     const [state, dispatch] = useReducer(reducer, {
         loading: false,
         data: null,
-        error: false
+        error: false,
+        count: 0
     });
 
+    const loadingOnlyFirst = options.loadingOnlyFirst || false;
+
     const runAsyncTask = async () => {
-        dispatch({
-            type: 'LOADING'
-        });
+
+        if (!loadingOnlyFirst || state.count === 0)
+            dispatch({
+                type: 'LOADING'
+            });
 
         try {
             const data = await asyncTask();
