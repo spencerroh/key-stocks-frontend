@@ -1,12 +1,10 @@
 const $ = {
     Assigned: (object, trueGenerator, falseGenerator = () => {}) => {
         if (object != null) {
-            trueGenerator?.();
+            return trueGenerator?.();
         } else {
-            falseGenerator?.();
+            return falseGenerator?.();
         }
-    
-        return null;
     }
 }
 
