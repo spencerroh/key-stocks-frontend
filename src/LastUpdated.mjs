@@ -8,7 +8,7 @@ import Stocks from './Stocks.mjs'
 import './LastUpdated.css';
 
 async function queryTodayStocks() {
-    var response = await axios.get('/today');
+    var response = await axios.get('/api/key-stocks/v1/today');
     return response.data;
 }
 

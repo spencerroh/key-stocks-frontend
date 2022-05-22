@@ -12,7 +12,7 @@ import './SearchStocks.css';
 
 async function queryKeywords(queryCriteria) {
     var response = await axios.post(
-        '/query/keywords', queryCriteria);
+        '/api/key-stocks/v1/query/keywords', queryCriteria);
 
     return response.data;
 }
