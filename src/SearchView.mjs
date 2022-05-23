@@ -24,12 +24,13 @@ class SearchView extends Component {
             item => 
                 <tr className="stock-name" key={item.id}>
                     <td className="search-view-col-name text-center">
-                    <p>
-                        {item.name}
-                    </p>
-                    <p className="stock-code">
-                        ({item.code})
-                    </p></td>
+                        <p>
+                            {item.name}
+                        </p>
+                        <p className="stock-code">
+                            ({item.code})
+                        </p>
+                    </td>
                     <td className="search-view-col-date">{item.date}</td>
                     <td className="search-view-col-reason">{item.reason}</td>
                 </tr>);            

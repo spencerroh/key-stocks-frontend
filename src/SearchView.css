@@ -17,6 +17,12 @@
     color: #333;
 }
 
+.search-view-header {
+    @apply
+        hidden
+        sm:table-header-group;
+}
+
 .search-view-header th{
     border-top: none;
     background-color: #a6d3ff;
@@ -48,4 +54,34 @@
 
 .search-view-body .search-view-col-name .stock-code {
     font-size: 0.75em;
+}
+
+tr.stock-name {
+    @apply
+        flex flex-row flex-wrap justify-between items-center
+        sm:table-row;
+}
+
+tr.stock-name td {
+    @apply
+        flex-row
+        sm:table-cell;
+}
+
+tr.stock-name td.search-view-col-name {
+    @apply
+        flex items-center border-b-0 w-auto 
+        sm:table-cell sm:border-b sm:w-32;
+}
+
+tr.stock-name td.search-view-col-date {
+    @apply
+    border-b-0 text-xs
+    sm:border-b sm:text-base;
+}
+
+tr.stock-name td.search-view-col-reason {
+    @apply
+        w-full pt-0 text-gray-500 
+        sm:w-auto sm:pt-2.5 sm:text-gray-800;
 }
