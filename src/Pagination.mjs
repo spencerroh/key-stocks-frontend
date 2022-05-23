@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import { useMediaQuery } from 'react-responsive'
 
 // css
 import './Pagination.css';
@@ -6,8 +7,9 @@ import './Pagination.css';
 export default function Pagination(props) {
     const count = props.count || 0;
     const current = props.current || 1;
+    const isMobile = !useMediaQuery({ query: '(min-width: 640px)' });
     const itemsPerPage = props.itemsPerPage || 10;
-    const pagesPerSection = props.pagesPerView || 10;
+    const pagesPerSection = props.pagesPerView || 4;
     const pageMoved = props.pageMoved || ((i) => {});
 
     if (count === 0 || count <= itemsPerPage)
