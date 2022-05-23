@@ -70,14 +70,14 @@ tr.stock-name td {
 
 tr.stock-name td.search-view-col-name {
     @apply
-        flex items-center border-b-0 w-auto 
-        sm:table-cell sm:border-b sm:w-32;
+        flex items-center border-b-0 w-auto p-1
+        sm:table-cell sm:border-b sm:w-32 sm:p-2.5;
 }
 
 tr.stock-name td.search-view-col-date {
     @apply
-    border-b-0 text-xs
-    sm:border-b sm:text-base;
+    border-b-0 text-xs p-1
+    sm:border-b sm:text-base sm:p-2.5;
 }
 
 tr.stock-name td.search-view-col-reason {
