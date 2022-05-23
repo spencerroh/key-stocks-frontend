@@ -21,7 +21,7 @@ export default function LastUpdated() {
     if (stocks.error != null) return (<div>{stocks.error}</div>);
     
     return (
-        <div className="panel col-start-2 col-span-10 rounded">
+        <div className="panel rounded">
             <div className="panel-title">오늘의 특징주 ({stocks.data.date})</div>
             <div className="panel-contents">
                 <Stocks items={stocks.data.stocks} />

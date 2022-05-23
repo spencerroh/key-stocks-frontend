@@ -10,12 +10,17 @@
 .pretty-table td, .pretty-table th {
     padding: 10px;
     border-bottom: 1px solid #dfdfdf;
-    color: #333;
+    @apply text-gray-800;
 }
 
 .pretty-table td:first-child {
-    color: #333;
-    width: 150px;
+    @apply w-36;
+}
+
+.table-header {
+    @apply 
+        hidden
+        sm:table-header-group;
 }
 
 .table-header th{
@@ -31,6 +36,25 @@
 
 .table-header th:last-child {
     border-top-right-radius: 10px;
+}
+
+tr.stock {
+    @apply 
+        flex flex-col
+        sm:table-row ;
+}
+
+tr.stock td.stock-name {
+    @apply
+        text-center
+        flex flex-row p-1 border-b-0 items-center w-auto
+        sm:table-cell sm:p-2.5 sm:border-b sm:w-32;
+}
+
+tr.stock td.stock-reason {
+    @apply 
+        w-full pt-0 text-gray-500 
+        sm:w-auto sm:pt-2.5 sm:text-gray-800;;
 }
 
 .stock-code {

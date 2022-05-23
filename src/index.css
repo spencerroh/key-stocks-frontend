@@ -25,6 +25,9 @@ code {
     background-color: white;
     margin: 10px;
     padding: 10px;
+
+    @apply col-start-1 col-span-12 
+           md:col-start-2 md:col-span-10
 }
 
 .panel .panel-title {
