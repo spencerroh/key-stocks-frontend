@@ -26,8 +26,8 @@ code {
     margin: 10px;
     padding: 10px;
 
-    @apply col-start-1 col-span-12 
-           md:col-start-2 md:col-span-10
+    @apply col-start-1 col-span-10
+           md:col-start-2 md:col-span-8
 }
 
 .panel .panel-title {

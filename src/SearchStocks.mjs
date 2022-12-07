@@ -60,7 +60,7 @@ export default function SearchStocks() {
     }
 
     return (
-        <div className='panel col-start-2 col-span-10 rounded'>
+        <div className='panel rounded'>
             <div className='panel-title'>특징주 검색</div>
             <div className='panel-contents'>
                 <input 
