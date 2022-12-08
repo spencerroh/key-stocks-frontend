@@ -1,7 +1,0 @@
-.App {
-  @apply md:container md:mx-auto;
-}
-
-.app-body {
-  @apply grid grid-cols-10;
-}

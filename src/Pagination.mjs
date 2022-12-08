@@ -1,5 +1,4 @@
 import _ from 'lodash'
-import { useMediaQuery } from 'react-responsive'
 
 // css
 import './Pagination.css';
@@ -7,7 +6,6 @@ import './Pagination.css';
 export default function Pagination(props) {
     const count = props.count || 0;
     const current = props.current || 1;
-    const isMobile = !useMediaQuery({ query: '(min-width: 640px)' });
     const itemsPerPage = props.itemsPerPage || 10;
     const pagesPerSection = props.pagesPerView || 4;
     const pageMoved = props.pageMoved || ((i) => {});
@@ -30,18 +28,18 @@ export default function Pagination(props) {
         .map(page => (
             <button 
                 key={page} 
-                className={`${page == current ? 'pagination-now' : ''}`}
+                className={`${page === current ? 'pagination-now' : ''}`}
                 onClick={() => movePage(page)}>{page}</button>
         ));
     
     let prev = null;
-    if (currentSection != 1)
+    if (currentSection !== 1)
         prev = (<button 
             className="pagination-pn"
             onClick={() => movePage((currentSection - 1) * pagesPerSection)}>PREV</button>);
 
     let next = null;
-    if (currentSection != sections)
+    if (currentSection !== sections)
         next = (<button
             className="pagination-pn"
             onClick={() => movePage(currentSection * pagesPerSection + 1)}>NEXT</button>);

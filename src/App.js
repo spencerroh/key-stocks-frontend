@@ -1,19 +1,9 @@
-import LastUpdated from './LastUpdated.mjs';
-import SearchStocks from './SearchStocks.mjs';
+import Layout from './components/Layout'
 
-import './App.css';
-import logo from './logo.svg';
-
-function App() {
+export default function App() {
     return (
-        <div className="App">
-            <div className="app-body">
-                <SearchStocks />
-                <LastUpdated />
-            </div>
+        <div>
+            <Layout />
         </div>
     );
 }
-
-export default App;
-

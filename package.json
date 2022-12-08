@@ -5,14 +5,17 @@
   "proxy": "http://localhost:2000",
   "homepage": ".",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.2.0",
+    "@heroicons/react": "^2.0.13",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "lodash": "^4.17.21",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.7.1",
     "react-responsive": "^9.0.0-beta.8",
+    "react-router-dom": "^6.4.4",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
@@ -43,6 +46,8 @@
   "devDependencies": {
     "autoprefixer": "^10.4.7",
     "postcss": "^8.4.13",
+    "styled-components": "^5.3.6",
+    "tailwind-styled-components": "^2.2.0",
     "tailwindcss": "^3.0.24"
   }
 }
