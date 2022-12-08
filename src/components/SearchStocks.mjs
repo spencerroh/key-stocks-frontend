@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import $ from './utils/directives.mjs'
-import useAsync from './hooks/useAsync.mjs'
+import $ from '../utils/directives.mjs'
+import useAsync from '../hooks/useAsync.mjs'
 
 // Component
 import SearchView from './SearchView.mjs'

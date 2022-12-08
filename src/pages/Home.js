@@ -1,5 +1,5 @@
-import LastUpdated from '../LastUpdated.mjs';
-import SearchStocks from '../SearchStocks.mjs';
+import LastUpdated from '../components/LastUpdated.mjs';
+import SearchStocks from '../components/SearchStocks.mjs';
 
 export default function Home() {
     return (

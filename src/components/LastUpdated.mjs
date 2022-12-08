@@ -1,5 +1,5 @@
 import axios from 'axios';
-import useAsync from './hooks/useAsync.mjs'
+import useAsync from '../hooks/useAsync.mjs'
 
 // Components
 import Stocks from './Stocks.mjs'
