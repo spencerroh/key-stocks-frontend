@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import tw from 'tailwind-styled-components'
-import { HiOutlineKey, HiOutlineLightBulb } from "react-icons/hi2";
+import { 
+    HiOutlineKey, 
+    HiOutlineCalendar, 
+    HiOutlineTableCells } from "react-icons/hi2";
 
 import Home from '../pages/Home'
 import AppBar from './AppBar';
 import SideMenu from './SideMenu';
-import About from '../pages/About';
+import MonthSearch from '../pages/MonthSearch';
+import Export from '../pages/Export';
 
 const Main = tw.main`
     grid
@@ -58,9 +62,14 @@ export default function Layout() {
             link: "/home",
         }, 
         {
-            icon: <HiOutlineLightBulb />, 
-            title: "about",
-            link: "/about",
+            icon: <HiOutlineCalendar />, 
+            title: "월별 검색",
+            link: "/monthly",
+        },
+        {
+            icon: <HiOutlineTableCells />, 
+            title: "추출하기",
+            link: "/export",
         }
     ];
         
@@ -78,7 +87,8 @@ export default function Layout() {
             <Main>
                 <Routes>
                     <Route path="/home" element={<Home />} />
-                    <Route path="/about" element={<About />} />
+                    <Route path="/monthly" element={<MonthSearch />} />
+                    <Route path="/export" element={<Export />} />
                     <Route path="*" element={<Home />} />
                 </Routes>
             </Main>         

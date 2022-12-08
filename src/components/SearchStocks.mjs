@@ -9,6 +9,7 @@ import Pagination from './Pagination.mjs'
 
 // CSS
 import './SearchStocks.css';
+import Card from './Card.js'
 
 async function queryKeywords(queryCriteria) {
     var response = await axios.post(
@@ -60,14 +61,12 @@ export default function SearchStocks() {
     }
 
     return (
-        <div className='panel rounded'>
-            <div className='panel-title'>특징주 검색</div>
-            <div className='panel-contents'>
-                <input 
-                    className='input-text' 
-                    type='input'
-                    placeholder='핵심 단어'
-                    onKeyPress={ onKeywordTyped }></input>
+        <Card title="특징주 검색">
+            <input 
+                className='input-text' 
+                type='input'
+                placeholder='핵심 단어'
+                onKeyPress={ onKeywordTyped }></input>
                 
             { $.Assigned(data, () =>
                 <div>
@@ -84,7 +83,6 @@ export default function SearchStocks() {
                     </div>
                 </div>)
             }
-            </div>
-        </div>
+        </Card>
     );
 };
