@@ -19,26 +19,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-.panel {
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 2px 2px -1px rgb(0 0 0 / 0.1);
-    background-color: white;
-    margin: 10px;
-    padding: 10px;
-
-    @apply col-start-1 col-span-10
-           md:col-start-2 md:col-span-8
-}
-
-.panel .panel-title {
-    color: #999;
-
-    padding: 10px;
-    padding-top: 5px;
-
-    @apply text-left;
-}
-
-.panel .panel-contents {
-    margin: 10px;
-}
