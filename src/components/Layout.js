@@ -50,7 +50,7 @@ const Backdrop = tw.div`
 `;
 
 export default function Layout() {
-    const [menuOpened, setMenuOpened] = useState(true);
+    const [menuOpened, setMenuOpened] = useState(false);
     const onMenuClicked = () => {
         setMenuOpened(!menuOpened);
     }
