@@ -34,7 +34,7 @@ const Aside = tw.aside`
     w-full
     h-full
     flex
-    ${(props) => (props.opened) ? "flex" : "hidden" }
+    ${(props) => (props.$opened) ? "flex" : "hidden" }
 `;
 
 const Menu = tw.div`
@@ -75,7 +75,7 @@ export default function Layout() {
         
     return (
         <div id="app-layout">
-            <Aside opened={menuOpened}>
+            <Aside $opened={menuOpened}>
                 <Menu>
                     <SideMenu menu={menu} />
                 </Menu>
